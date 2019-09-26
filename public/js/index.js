@@ -1,10 +1,12 @@
+/* eslint-disable prettier/prettier */
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
-
+var apiInfo = require("Project2\config\api.js")
 // The API object contains methods for each kind of request we'll make
+console.log(apiInfo.apiKey);
 var API = {
   saveExample: function(example) {
     return $.ajax({
