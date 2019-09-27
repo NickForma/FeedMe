@@ -1,3 +1,14 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.carousel-item {
+  height: 500px;
+  width: 100%;
+}
+
+.carousel-caption{
+  color: red;
+  font-size: 22px;
+  font-weight: 800;
+}
