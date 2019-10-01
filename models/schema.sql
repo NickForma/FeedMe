@@ -1,5 +1,14 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS feedMeDb;
+CREATE DATABASE feedMeDb;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+
+
+USE feedMeDb;
+CREATE TABLE recipes (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    url VARCHAR(400) NOT NULL,
+    day VARCHAR(100) NOT NULL,
+    time VARCHAR(10) NOT NULL,
+    primary key(id)
+)
