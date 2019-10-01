@@ -11,11 +11,30 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/hi", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/calendar", function(req, res) {
+    db.Example.findAll({ where: { text: salad }}).then(function(dbExamples) {
       res.render("calendar", {
-        msg: "Welcome!",
-        examples: dbExamples
+        monB: dbExamples,
+        tueB: "",
+        wedB: "",
+        thurB: "",
+        friB: "",
+        satB: "",
+        sunB: "",
+        monL: "",
+        tueL: "",
+        wedL: "",
+        thurL: "",
+        friL: "",
+        satL: "",
+        sunL: "",
+        monD: "",
+        tueD: "",
+        wedD: "",
+        thurD: "",
+        friD: "",
+        satD: "",
+        sunD: ""
       });
     });
   });
