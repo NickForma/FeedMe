@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Recipe.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
@@ -12,29 +12,9 @@ module.exports = function(app) {
   });
 
   app.get("/calendar", function(req, res) {
-    db.Example.findAll({ where: { text: salad }}).then(function(dbExamples) {
+    db.feedMeDb.findAll({}).then(function(feedMeDb) {
       res.render("calendar", {
-        monB: dbExamples,
-        tueB: "",
-        wedB: "",
-        thurB: "",
-        friB: "",
-        satB: "",
-        sunB: "",
-        monL: "",
-        tueL: "",
-        wedL: "",
-        thurL: "",
-        friL: "",
-        satL: "",
-        sunL: "",
-        monD: "",
-        tueD: "",
-        wedD: "",
-        thurD: "",
-        friD: "",
-        satD: "",
-        sunD: ""
+        monD: feedMeDb
       });
     });
   });
