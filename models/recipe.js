@@ -1,8 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   var Recipe = sequelize.define("Recipe", {
-    title: DataTypes.STRING,
-    day: DataTypes.STRING,
-    time: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    day: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    time: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   });
   return Recipe;
 };
