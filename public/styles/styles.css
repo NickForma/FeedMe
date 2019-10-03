@@ -1,3 +1,39 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#output {
+  margin: 0;
+  display: inline;
+}
+.dropdown {
+  display: inline;
+}
+.apiContent {
+  width: 10%;
+  padding: 0.5%;  
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: justify;
+  font-size: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  
+}
+#instructions{
+  text-align: center;
+}
+#timeinfo{
+  text-align: center;
+}
+img {
+  width: 100%;
+}
+    
+    
+.modal-dialog {
+  width: 600px;
+  height: 100px;
+}
