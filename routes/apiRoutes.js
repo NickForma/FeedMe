@@ -2,7 +2,6 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/calendar", function(req, res) {
-    console.log(req)
     db.Recipe.findAll({
       where: {
         day: tues,

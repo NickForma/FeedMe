@@ -1,18 +1,37 @@
+// var data = require(".../models/index.js");
 
-
+// console.log(data);
 
 var tabledata = [
   {
     meal: "Breakfast",
-    monday: []
+    monday: ["SALAD"],
+    tuesday: [],
+    Wednesday: [],
+    Thursday: ["yellow"],
+    Friday: [],
+    Saturday: [],
+    Sunday: []
   },
   {
     meal: "Lunch",
-    monday: []
+    monday: ["NOT SALAD"],
+    tuesday: [],
+    Wednesday: [],
+    Thursday: [],
+    Friday: [],
+    Saturday: ["BREAD"],
+    Sunday: []
   },
   {
     meal: "Dinner",
-    monday: []
+    monday: ["MORE SALAD"],
+    tuesday: [],
+    Wednesday: [],
+    Thursday: ["TOAST"],
+    Friday: [],
+    Saturday: [],
+    Sunday: []
   }
 ];
 
@@ -23,8 +42,8 @@ var table = new Tabulator("#example-table", {
   tooltips: true, //show tool tips on cells
   addRowPos: "top", //when adding a new row, add it to the top of the table
   history: true, //allow undo and redo actions on the table
-//   pagination: "local", //paginate the data
-//   paginationSize: 7, //allow 7 rows per page of data
+  //   pagination: "local", //paginate the data
+  //   paginationSize: 7, //allow 7 rows per page of data
   movableColumns: true, //allow column order to be changed
   resizableRows: true, //allow row order to be changed
   initialSort: [
@@ -33,7 +52,10 @@ var table = new Tabulator("#example-table", {
   ],
   columns: [
     //define the table columns
-    { title: "Meal", field: "meal" },
+    {
+      title: "Meal",
+      field: "meal"
+    },
     {
       title: "Monday",
       field: "monday",
