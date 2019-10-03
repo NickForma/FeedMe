@@ -9,11 +9,11 @@
 
 h1 {
   font-size: 72px;
-  background: -webkit-linear-gradient( rgb(61, 61, 61), rgb(43, 219, 43));
+  background: -webkit-linear-gradient(rgb(61, 61, 61), rgb(43, 219, 43));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  
+}
 .cal-row {
   box-sizing: border-box;
   width: 300px;
