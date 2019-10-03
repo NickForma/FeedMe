@@ -7,6 +7,11 @@ module.exports = function(app) {
       res.render("index", {
         msg: "FEED ME",
         examples: dbExamples
+
+  app.get("/calendar", function(req, res) {
+    db.Recipe.findAll({}).then(function(feedMeDb) {
+      res.render("calendar", {
+        monD: feedMeDb
       });
     });
   });
