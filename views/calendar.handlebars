@@ -1,7 +1,7 @@
 <div class="container">
   <h2>MealPlanner!</h2>
   <div class="table-responsive">          
-  <table class="table">
+  {{!-- <table class="table">
     <thead>
       <tr>
         <th>Meal</th>
@@ -17,13 +17,13 @@
     <tbody>
       <tr class="cal-row">
         <td><strong>Breakfast</strong></td>
-        <td id="cell1">{{monB}}</td>
-        <td id="cell2">{{tuesB}}</td>
-        <td id="cell3">{{wedB}}</td>
-        <td id="cell4">{{thurB}}</td>
-        <td id="cell5">{{friB}}</td>
-        <td id="cell6">{{satB}}</td>
-        <td id="cell7">{{sunB}}</td>
+        <td id="cell1">{{this.monB}}</td>
+        <td id="cell2">{{this.tues}}</td>
+        <td id="cell3">{{this.wedB}}</td>
+        <td id="cell4">{{this.thurB}}</td>
+        <td id="cell5">{{this.friB}}</td>
+        <td id="cell6">{{this.satB}}</td>
+        <td id="cell7">{{this.sunB}}</td>
       </tr>
             <tr class="cal-row">
         <td><strong>Lunch</strong></td>
@@ -46,6 +46,10 @@
         <td id="cell21">{{sunD}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> --}}
+
+  <div id="example-table"></div>
   </div>
 </div>
+
+<script src="/js/calendar.js"></script>

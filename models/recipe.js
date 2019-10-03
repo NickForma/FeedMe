@@ -11,6 +11,9 @@ module.exports = function(sequelize, DataTypes) {
     time: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    recipeID: {
+      type: DataTypes.INTEGER
     }
   });
   return Recipe;

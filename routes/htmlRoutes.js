@@ -2,17 +2,17 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Recipe.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
+  // app.get("/", function(req, res) {
+  //   db.Recipe.findAll({}).then(function(dbExamples) {
+  //     res.render("index", {
+  //       msg: "Welcome!",
+  //       examples: dbExamples
+  //     });
+  //   });
+  // });
 
   app.get("/calendar", function(req, res) {
-    db.feedMeDb.findAll({}).then(function(feedMeDb) {
+    db.Recipe.findAll({}).then(function(feedMeDb) {
       res.render("calendar", {
         monD: feedMeDb
       });
