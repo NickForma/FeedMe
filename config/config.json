@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "exampledb",
+    "database": "feedMeDb",
     "host": "localhost",
     "dialect": "mysql"
   },
