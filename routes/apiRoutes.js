@@ -14,6 +14,12 @@ module.exports = function(app) {
     });
   });
 
+  // app.post("/api/id", function(req, res) {
+  //   db.Recipe.create(req.body).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
+
   app.get("/api/ingredients/:id", function(req, res) {
     db.Recipe.findOne({ where: { id: req.params.id } }).then(function(
       ingredient

@@ -11,15 +11,27 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get("/mealPlan", function(req, res) {
+  app.get("/mealPlan", function(req, res){
     res.render("mealPlan");
   });
 
   app.get("/ingredients/:id", function(req, res) {
-    db.Recipe.findOne({ where: { id: req.params.id } }).then(function() {
-      res.render("ingredients");
+    db.Recipe.findOne({ where: { id: req.params.id } }).then(function(recipe) {
+      console.log(recipe.dataValues.recipeID);
+      res.render("ingredients", {
+        recipe: recipe
+      });
     });
   });
+  // app.get("/mealPlan", function(req, res) {
+  //   res.render("mealPlan");
+  // });
+
+  // app.get("/ingredients/:id", function(req, res) {
+  //   db.Recipe.findOne({ where: { id: req.params.id } }).then(function() {
+  //     res.render("ingredients");
+  //   });
+  // });
 
   // Load example page and pass in an example by id
   // app.get("/example/:id", function (req, res) {

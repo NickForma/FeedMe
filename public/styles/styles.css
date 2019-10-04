@@ -2,7 +2,7 @@
   line-height: 2.5;
 }
 
-#output {
+.output {
   margin: 0;
   display: inline;
 }
