@@ -16,14 +16,14 @@ $.ajax({
   method: "GET"
 }).then(function (response) {
 
-  ingTable = `<tr><th>Name</th><th>Amount</th></tr>`;
   for (var i = 0; i < response.ingredients.length; i++) {
-    ingTable += `<tr><td class=name>${response.ingredients[i].name}</td>
-      <td class="amount>${response.ingredients[i].amount.us.value} ${response.ingredients[i].amount.us.unit}
-      </td></tr>`;
+    var ingTable = "<tr>";
+      ingTable += `<th scope="row">${i+1}</th>`;
+      ingTable += `<td>${response.ingredients[i].name}</td>`;
+      ingTable += `<td>${response.ingredients[i].amount.us.value} ${response.ingredients[i].amount.us.unit}</td>`;
+      ingTable += "</tr>";
+      $("#tableBody").append(ingTable);
 
-  }
-  console.log(ingTable);
-  document.getElementById("ingredientsData").innerHTML = ingTable;
+  };
 
 });

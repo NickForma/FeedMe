@@ -1,8 +1,18 @@
 <div class="table-container">
   <div class="row">
-    <div class="col-md-6 " id= "list" data-recipeId={{recipe.dataValues.recipeID}}>
+    <div class="col-md-6 " id="list" data-recipeId={{recipe.dataValues.recipeID}}>
 
-      <table id="ingredientsData"></table>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Amount Needed</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
 
     </div>
 
