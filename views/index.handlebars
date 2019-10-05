@@ -1,26 +1,26 @@
 <div id="home">
-  
 
-    <div class="header">
 
-      <h1 class="title">{{msg}}</h1>
+  <div class="header">
 
-      {{#each examples}}
-      <li data-id="{{this.id}}" class="list-group-item">
-        <a href="example/{{this.id}}">{{this.text}}</a>
-        <button class="btn btn-danger float-right delete">ｘ</button>
-      </li>
-      {{/each}}
+    <h1 class="title">{{msg}}</h1>
 
-    </div>
+    {{#each examples}}
+    <li data-id="{{this.id}}" class="list-group-item">
+      <a href="example/{{this.id}}">{{this.text}}</a>
+      <button class="btn btn-danger float-right delete">ｘ</button>
+    </li>
+    {{/each}}
 
-    <div id="mainImg" class="container-fluid">
-      <img src="/images/HomePageImage.jpg" style="width: 100%" alt="Home Page Image">
-    </div>
-    
+  </div>
+
+  <div id="mainImg" class="container-fluid">
+    <img src="/images/HomePageImage.jpg" style="width: 100%" alt="Home Page Image">
+  </div>
+
 </div>
 
-  {{!-- <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.4/dist/js/tabulator.min.js"></script> --}}
+{{!-- <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.4/dist/js/tabulator.min.js"></script> --}}
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
