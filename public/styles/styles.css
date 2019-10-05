@@ -2,6 +2,41 @@
   line-height: 2.5;
 }
 
+.output {
+  margin: 0;
+  display: inline;
+}
+.dropdown {
+  display: inline;
+}
+.apiContent {
+  width: 10%;
+  padding: 0.5%;  
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: justify;
+  font-size: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  
+}
+#instructions{
+  text-align: center;
+}
+#timeinfo{
+  text-align: center;
+}
+img {
+  width: 100%;
+}
+    
+    
+.modal-dialog {
+  width: 600px;
+  height: 100px;
+}
 .title {
   margin: 40px;
   text-align: center;
@@ -9,11 +44,11 @@
 
 h1 {
   font-size: 72px;
-  background: -webkit-linear-gradient( rgb(61, 61, 61), rgb(43, 219, 43));
+  background: -webkit-linear-gradient(rgb(61, 61, 61), rgb(43, 219, 43));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  
+}
 .cal-row {
   box-sizing: border-box;
   width: 300px;

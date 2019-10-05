@@ -1,99 +1,124 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var selectedTime;
+var selectedDay;
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+$("#submit").on("click", function() {
   event.preventDefault();
+  $(".output").html(" ");
+  var searchText = $("#search-text").val();
+  var queryURL =
+    "https://api.spoonacular.com/recipes/complexSearch?apiKey=0c9667069d874559adad952a175705db&addRecipeInformation=true&number=10&query=" +
+    searchText;
+  console.log(searchText);
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    var data = response.results;
+    for (var i=0; i < data.length; i++){
+      var content = $(`
+        <div class="apiContent">
+          <img src="${data[i].image}" class="foodImages" alt="foodImage">
+          <h6>${data[i].title}</h6>
+        </div>
+      `);
+      content.data("cookingTime", data[i].readyInMinutes);
+      content.data("analyzedInstructions", data[i].analyzedInstructions);
+      content.data("servingSize", data[i].servings);
+      content.data("imageURL", data[i].image);
+      content.data("recipeID", data[i].id);
+      content.data("title", data[i].title);
+      $(".output").append(content);
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+    }
+  });
+});
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
+$(".output").on("click", ".apiContent", function(){
+  $("#recipeModal").modal("show");
+  var recipe = $(this).data("analyzedInstructions");
+  var image = $(this).data("imageURL");
+  var readyTime = $(this).data("cookingTime");
+  var recipeID = $(this).data("recipeID");
+  var servingSize = $(this).data("servingSize");
+  var title = $(this).data("title");
+  $("#modalImage").attr("src", image);
+  $("#servingSize").text(servingSize);
+  $("#time").text(readyTime);
+  var list = "<ol>";
+  for (var j = 0; j < recipe[0].steps.length; j++){
+    list += `<li>${recipe[0].steps[j].step}</li>`
   }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  list += "</ol>";
+  $("#infoHolder").html(list);
+  $("#day li a").click(function(){
+    selectedDay = $(this).text();
   });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  $("#time li a").click(function(){
+    selectedTime = $(this).text();
   });
-};
+  $("#ingSubmit").on("click", function(){
+    event.preventDefault();
+    console.log("I am running");
+    var newPlan = {
+      title: title,
+      day: selectedDay,
+      time: selectedTime,
+      recipeID: recipeID
+    };
+    console.log(newPlan);
+    $.post("/api/id", newPlan).then(function(data){
+      console.log(data);
+      window.location.href = "/ingredients/" + data.id;
+    });
+  });
+});
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// $(".output").on("click", ".apiContent", function () {
+//   console.log("i am running", this);
+//   $("#recipeModal").modal("show");
+//   var recipe = $(this).data("analyzedInstructions");
+//   console.log(recipe);
+//   var image = $(this).data("imageURL");
+//   var readyTime = $(this).data("cookingTime");
+//   var servingSize = $(this).data("servingSize");
+//   var recipeID = $(this).data("recipeID");
+//   var title = $(this).data("title");
+//   $("#modalImage").attr("src", image);
+//   $("#servingSize").text(servingSize);
+//   $("#time").text(readyTime);
+//   var list = "<ol>";
+//   for (var j = 0; j < recipe[0].steps.length; j) {
+//     list += `<li> ${recipe[0].steps[j].step} </li>`;
+//     console.log(j);
+//   }
+//   list += "</ol>";
+//   $("#infoHolder").html(list);
+//   $("#day li a").click(function () {
+//     selectedDay = $(this).text();
+//   });
+//   $("#time li a").click(function () {
+//     selectedTime = $(this).text();
+//   });
+//   $("#ingSubmit").on("click", function () {
+//     event.preventDefault();
+//       var newPlan = {
+//       title: title,
+//       day: selectedDay,
+//       time: selectedTime,
+//       recipeID: recipeID
+//     };
+
+//     module.exports = {
+//       newPlan: newPlan
+//     };
+
+//     $.post("/api/id", newPlan).then(function (data) {
+//       console.log(data);
+//       window.location.href = "/ingredients/" + data.id;
+//     });
+//   });
+  
+// });
+
