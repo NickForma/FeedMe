@@ -1,5 +1,9 @@
 var selectedTime;
 var selectedDay;
+var $email = $("#email");
+var $password = $("#password");
+var $loginBtn = $(".login-btn");
+var $signupBtn = $(".signup-btn");
 
 $("#submit").on("click", function() {
   event.preventDefault();
@@ -15,7 +19,7 @@ $("#submit").on("click", function() {
   }).then(function(response) {
     console.log(response);
     var data = response.results;
-    for (var i=0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++) {
       var content = $(`
         <div class="apiContent">
           <img src="${data[i].image}" class="foodImages" alt="foodImage">
@@ -29,12 +33,11 @@ $("#submit").on("click", function() {
       content.data("recipeID", data[i].id);
       content.data("title", data[i].title);
       $(".output").append(content);
-
     }
   });
 });
 
-$(".output").on("click", ".apiContent", function(){
+$(".output").on("click", ".apiContent", function() {
   $("#recipeModal").modal("show");
   var recipe = $(this).data("analyzedInstructions");
   var image = $(this).data("imageURL");
@@ -46,18 +49,18 @@ $(".output").on("click", ".apiContent", function(){
   $("#servingSize").text(servingSize);
   $("#time").text(readyTime);
   var list = "<ol>";
-  for (var j = 0; j < recipe[0].steps.length; j++){
-    list += `<li>${recipe[0].steps[j].step}</li>`
+  for (var j = 0; j < recipe[0].steps.length; j++) {
+    list += `<li>${recipe[0].steps[j].step}</li>`;
   }
   list += "</ol>";
   $("#infoHolder").html(list);
-  $("#day li a").click(function(){
+  $("#day li a").click(function() {
     selectedDay = $(this).text();
   });
-  $("#time li a").click(function(){
+  $("#time li a").click(function() {
     selectedTime = $(this).text();
   });
-  $("#ingSubmit").on("click", function(){
+  $("#ingSubmit").on("click", function() {
     event.preventDefault();
     console.log("I am running");
     var newPlan = {
@@ -67,13 +70,75 @@ $(".output").on("click", ".apiContent", function(){
       recipeID: recipeID
     };
     console.log(newPlan);
-    $.post("/api/id", newPlan).then(function(data){
+    $.post("/api/id", newPlan).then(function(data) {
       console.log(data);
       window.location.href = "/ingredients/" + data.id;
     });
   });
 });
 
+// The API object contains methods for each kind of request we'll make
+var API = {
+  login: function(loginCreds) {
+    return $.ajax({
+      url: "/api/login",
+      type: "POST",
+      data: loginCreds
+    });
+  },
+  signup: function(signupCreds) {
+    return $.ajax({
+      url: "/api/signup",
+      type: "POST",
+      data: signupCreds
+    });
+  }
+};
+
+var handleSignpBtnClick = function(event) {
+  event.preventDefault();
+  const signupCreds = {
+    email: $email.val(),
+    password: $password.val()
+  };
+  API.signup(signupCreds)
+    .done(function(data) {
+      localStorage.setItem("signedUpUserId", data.id);
+      location.href = "/";
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      alert("Sign Up Failed! Try Again!");
+      $password.val("");
+    })
+    .always(function() {});
+};
+
+var handleLoginBtnClick = function(event) {
+  event.preventDefault();
+
+  const loginCreds = {
+    email: $email.val(),
+    password: $password.val()
+  };
+  if (!(loginCreds.email && loginCreds.password)) {
+    alert("You must enter your email and password credentials !");
+    return;
+  }
+  API.login(loginCreds)
+    .done(function(data) {
+      localStorage.setItem("loggedInUserId", data.id);
+      location.href = "/";
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      alert("Login Failed");
+      $password.val("");
+    })
+    .always(function() {});
+};
+
+//Event listeners to the submit buttons
+$loginBtn.on("click", handleLoginBtnClick);
+$signupBtn.on("click", handleSignpBtnClick);
 
 // $(".output").on("click", ".apiContent", function () {
 //   console.log("i am running", this);
@@ -119,6 +184,5 @@ $(".output").on("click", ".apiContent", function(){
 //       window.location.href = "/ingredients/" + data.id;
 //     });
 //   });
-  
-// });
 
+// });

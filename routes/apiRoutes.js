@@ -32,6 +32,35 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/signup", (req, res) => {
+    console.log(req.body);
+    db.User.create(req.body)
+      .then(user => {
+        res.status(201).send(user);
+      })
+      .catch(err => {
+        res.status(400).send(err);
+      });
+  });
+
+  app.post("/api/login", (req, res) => {
+    console.log(req.body);
+    db.User.findOne({
+      where: req.body
+    })
+      .then(user => {
+        console.log(user);
+        if (user) {
+          res.status(200).send(user);
+        } else {
+          res.status(400).send(err);
+        }
+      })
+      .catch(err => {
+        res.status(400).send(err);
+      });
+  });
+
   // Create a new example
   // app.post("/api/examples", function(req, res) {
   //   db.Example.create(req.body).then(function (dbExample) {
