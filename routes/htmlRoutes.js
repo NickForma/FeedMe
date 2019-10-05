@@ -11,7 +11,7 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get("/mealPlan", function(req, res){
+  app.get("/mealPlan", function(req, res) {
     res.render("mealPlan");
   });
 
