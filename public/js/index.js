@@ -6,7 +6,7 @@ $("#submit").on("click", function() {
   $(".output").html(" ");
   var searchText = $("#search-text").val();
   var queryURL =
-    "https://api.spoonacular.com/recipes/complexSearch?apiKey=0c9667069d874559adad952a175705db&addRecipeInformation=true&number=10&query=" +
+    "https://api.spoonacular.com/recipes/complexSearch?apiKey=785fc0e6c92d43b1bc6f1749a77366e1&addRecipeInformation=true&number=10&query=" +
     searchText;
   console.log(searchText);
   $.ajax({
