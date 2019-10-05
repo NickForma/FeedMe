@@ -28,39 +28,6 @@ $.ajax({
     tabledata.push(data);
   }
 
-  // var tabledata = [
-  //   {
-  //     meal: "Breakfast",
-  //     monday: [],
-  //     tuesday: [],
-  //     Wednesday: [],
-  //     Thursday: ["yellow"],
-  //     Friday: [],
-  //     Saturday: [],
-  //     Sunday: []
-  //   },
-  //   {
-  //     meal: "Lunch",
-  //     monday: ["NOT SALAD"],
-  //     tuesday: [],
-  //     Wednesday: [],
-  //     Thursday: [],
-  //     Friday: [],
-  //     Saturday: ["BREAD"],
-  //     Sunday: []
-  //   },
-  //   {
-  //     meal: "Dinner",
-  //     monday: ["MORE SALAD"],
-  //     tuesday: [],
-  //     Wednesday: [],
-  //     Thursday: ["TOAST"],
-  //     Friday: [],
-  //     Saturday: [],
-  //     Sunday: []
-  //   }
-  // ];
-
   var table = new Tabulator("#example-table", {
     data: tabledata, //load row data from array
     layout: "fitColumns", //fit columns to width of table
@@ -80,7 +47,13 @@ $.ajax({
       //define the table columns
       {
         title: "Meal",
-        field: "meal"
+        field: "meal",
+        width: 100
+      },
+      {
+        title: "Sunday",
+        field: "Sunday",
+        align: "center"
       },
       {
         title: "Monday",
@@ -91,7 +64,6 @@ $.ajax({
         title: "Tuesday",
         field: "Tuesday",
         align: "center"
-        //   width: 50
       },
       {
         title: "Wednesday",
@@ -111,11 +83,6 @@ $.ajax({
       {
         title: "Saturday",
         field: "Saturday",
-        align: "center"
-      },
-      {
-        title: "Sunday",
-        field: "Sunday",
         align: "center"
       }
     ]
