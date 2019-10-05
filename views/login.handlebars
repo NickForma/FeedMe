@@ -1,0 +1,78 @@
+<form action="/login" method="POST">
+
+  <div id="banner">
+    <img src="/images/feedMeLogo.png" id="logo">
+    <!-- id for granim js -->
+    <canvas id="canvas-image"></canvas>
+  </div>
+
+  <div id="login">
+    <h3 class="text-center text-white pt-5"></h3>
+
+    <div class="container">
+
+      <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+          <div id="login-box" class="col-md-12">
+
+            <form id="login-form" class="form">
+
+              <h3 class="text-center text-info">Login</h3>
+
+              <div class="form-group">
+
+                <label for="email" class="text-info">Email:</label><br />
+                <input type="email" id="email" name="email" class="form-control" />
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="password" class="text-info">Password:</label><br />
+                <input type="password" id="password" class="form-control" />
+
+              </div>
+
+              <br />
+
+              <button type="submit" class="btn btn-info btn-lg btn-block login-btn"> <a href="#"></a>
+               Login</button>
+              <span id="or">Or</span>
+              <button type="submit" class="btn btn-info btn-lg btn-block signup-btn"> <a href="#"></a>
+                Sign Up</button>
+          </div>
+         
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</form>
+
+<!-- granium script -->
+
+<script>
+  var granimInstance = new Granim({
+    element: '#canvas-image',
+    direction: 'top-bottom',
+    isPausedWhenNotInView: true,
+    //image: {
+    //source: '/images/feedMeLogo.png',
+    //blendingMode: 'multiply'
+    //},
+    states: {
+      "default-state": {
+        gradients: [
+          ['#7E7279', '#33cc33'],
+          ['#e6e600', '#556270'],
+          ['#80d3fe', '#7ea0c4'],
+          ['#f0ab51', '#eceba3']
+        ],
+        transitionSpeed: 9000
+      }
+    }
+  });
+
+</script>
