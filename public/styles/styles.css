@@ -13,9 +13,24 @@
   font-family: 'Beth Ellen', cursive;
   font-size: 290%;
   font-weight: bold;
-  margin: 10%;
+  
+  
   
 }
+
+#monster {
+ 
+  width: 195px;
+  height: 190px;
+  margin: 18px;
+  
+
+}
+ #header {
+  position: relative;
+  top: 18px;
+ margin: 0;
+ }
 
 #scrolltohere {
   margin: 30% 0;
@@ -89,9 +104,9 @@
 
  
 .apiContent {
-  width: 9.5%;
+  width: 15%;
   
-  margin: 1px;
+  margin: 7px 10px;
   display: inline-block;
   box-sizing: border-box;
   text-align: justify;
@@ -111,10 +126,11 @@ img {
   width: 100%;
 }
 
-.modal-dialog {
+
+/* .modal-dialog {
   width: 600px;
   height: 100px;
-}
+} */
 .title {
   margin: 40px;
   text-align: center;

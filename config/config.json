@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Reo@1199",
     "database": "feedMeDb",
     "host": "localhost",
     "dialect": "mysql"
