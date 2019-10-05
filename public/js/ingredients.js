@@ -7,7 +7,7 @@ console.log(id);
 var queryURL =
   "https://api.spoonacular.com/recipes/" +
   id +
-  "/ingredientWidget.json?apiKey=0c9667069d874559adad952a175705db";
+  "/ingredientWidget.json?apiKey=785fc0e6c92d43b1bc6f1749a77366e1";
 
 
 
