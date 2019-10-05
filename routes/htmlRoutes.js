@@ -23,6 +23,11 @@ module.exports = function(app) {
       });
     });
   });
+
+  app.get("/grocerylist", function(req, res) {
+    res.render("ingredients");
+  });
+  
   app.get("/", function(req, res) {
     db.Recipe.findAll({}).then(function() {
       res.render("index", {
