@@ -2,16 +2,96 @@
   line-height: 2.5;
 }
 
+#header {
+  font-weight: bold;
+  margin: 10%;
+  font-size: 150%;
+}
+#headline{
+    
+  text-align: center;
+  font-family: 'Beth Ellen', cursive;
+  font-size: 290%;
+  font-weight: bold;
+  margin: 10%;
+  
+}
+
+#scrolltohere {
+  margin: 30% 0;
+}
+
+#submit {
+  width: 20%;
+  margin: 0 35%;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#search-text {
+  padding: 20px;
+}
+
+#mypage {
+  margin: 10% 20%;
+}
+
+#collapseResult {
+  width: 90%;
+  margin: 10px 80px 0px 80px;
+}
+
+#dButton {
+  width: 15%;
+  margin: 4px;
+}
+
+#tButton {
+  width: 15%;
+  margin: 4px;
+}
+
+#day {
+ 
+  margin: 4px;
+  text-align: center;
+}
+
+#day li a {
+  text-decoration: none;
+  color: black;
+ 
+}
+#time {
+ 
+  margin: 4px;
+  text-align: center;
+}
+
+#time li a {
+  text-decoration: none;
+  color: black;
+ 
+}
+
+#ingSubmit {
+  width: 30%;
+  margin: 4px;
+}
 .output {
-  margin: 0;
-  display: inline;
+  float: right;
 }
 .dropdown {
   display: inline;
 }
+
+
+ 
 .apiContent {
-  width: 10%;
-  padding: 0.5%;  
+  width: 9.5%;
+  
+  margin: 1px;
   display: inline-block;
   box-sizing: border-box;
   text-align: justify;
