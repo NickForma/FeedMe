@@ -1,29 +1,33 @@
 <div id="mealPlan">
     <div class="container">
         <div class="row">
-            <div class="col-8 offset-2">
-                <h2>Feed Me!</h2>
+            <div class="col-8 offset-2" id="mypage">
+                <h2><span id="header">Feed Me Something!</span></h2>
                 <form class="clearfix mb-4">
                     <div class="form-group">
-                        <label for="search-text">Search for food</label>
+                        <label for="search-text"></label>
                         <input type="text" id="search-text" class="form-control" aria-describedby="search-text"
-                        placeholder="What do you want to eat?">
-                        
+                            placeholder="What do you want to eat?">
+
                     </div>
-                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+                    <a id="submit" class="btn btn-primary" href="#scrolltohere">Submit</a>
                 </form>
             </div>
         </div>
+        
+    </div>
+    <div id="scrolltohere">
+        <div id="headline">
+            <p>Make a Selection</p>
+        </div>
+        
         <div class="output">
 
         </div>
     </div>
-    <div class="modal fade" id="recipeModal" role="dialog" aria-labelledby="recipeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                </div>
+   
+        <div class="collapse" id="collapseResult" >
+            <div class="card card-body" id="">
                 <div id="bigImage">
                     <img id="modalImage">
                 </div>
@@ -31,12 +35,13 @@
                 <p id="timeinfo"> &nbsp; &nbsp;Serves: <span id="servingSize"></span> &nbsp; &nbsp; &nbsp; Ready in:
                     <span id="time"></span> mins</p>
                 <hr>
-                <h3 id="instructions">Recipe Instructions</h3>
+                <h3 id="instructions" >Recipe Instructions</h3>
                 <div id="infoHolder">
 
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Day
+                    <button class="btn btn-secondary dropdown-toggle" id="dButton" type="button"
+                        data-toggle="dropdown">Select a Day
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu" id="day">
                         <li><a href="#">Sunday</a></li>
@@ -50,7 +55,8 @@
                     </ul>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Time
+                    <button class="btn btn-secondary dropdown-toggle" id="tButton" type="button"
+                        data-toggle="dropdown">Select a Time
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu" id="time">
                         <li><a href="#">Breakfast</a></li>

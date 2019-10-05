@@ -7,6 +7,9 @@ var $signupBtn = $(".signup-btn");
 
 $("#submit").on("click", function() {
   event.preventDefault();
+  $('html, body').animate({
+    scrollTop: $("#scrolltohere").offset().top
+  }, 1000);
   $(".output").html(" ");
   var searchText = $("#search-text").val();
   var queryURL =
@@ -21,8 +24,8 @@ $("#submit").on("click", function() {
     var data = response.results;
     for (var i = 0; i < data.length; i++) {
       var content = $(`
-        <div class="apiContent">
-          <img src="${data[i].image}" class="foodImages" alt="foodImage">
+        <div class="apiContent" data-toggle="collapse" href="#collapseResult" role="button" aria-expanded="false" aria-controls="collapseResult">
+          <img src="${data[i].image}" height= "150px" class="foodImages" alt="foodImage">
           <h6>${data[i].title}</h6>
         </div>
       `);
@@ -37,8 +40,9 @@ $("#submit").on("click", function() {
   });
 });
 
-$(".output").on("click", ".apiContent", function() {
-  $("#recipeModal").modal("show");
+$(".output").on("click", ".apiContent", function(){
+  
+  // $("#recipeModal").modal("show");
   var recipe = $(this).data("analyzedInstructions");
   var image = $(this).data("imageURL");
   var readyTime = $(this).data("cookingTime");
@@ -70,7 +74,10 @@ $(".output").on("click", ".apiContent", function() {
       recipeID: recipeID
     };
     console.log(newPlan);
-    $.post("/api/id", newPlan).then(function(data) {
+    if(!selectedDay || !selectedTime){
+      alert("Select Day and Time");
+    }
+    $.post("/api/id", newPlan).then(function(data){
       console.log(data);
       window.location.href = "/ingredients/" + data.id;
     });
