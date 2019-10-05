@@ -38,6 +38,18 @@ module.exports = function(app) {
       });
     });
   });
+
+  app.get("/signup", (req, res) => {
+    if (req.user) {
+      res.redirect("login");
+    }
+    res.render("signup");
+  });
+
+  app.get("/login", function(req, res) {
+    res.render("login");
+  });
+
   // app.get("/mealPlan", function(req, res) {
   //   res.render("mealPlan");
   // });
