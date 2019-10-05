@@ -16,6 +16,7 @@
     "express-handlebars": "^3.1.0",
     "jquery": "^3.4.1",
     "mysql2": "^1.6.5",
+    "nodemon": "^1.19.3",
     "sequelize": "^5.8.6"
   },
   "devDependencies": {

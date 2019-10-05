@@ -24,10 +24,9 @@ module.exports = function(app) {
     });
   });
   app.get("/", function(req, res) {
-    db.Recipe.findAll({}).then(function(dbExamples) {
+    db.Recipe.findAll({}).then(function() {
       res.render("index", {
-        msg: "FEED ME",
-        examples: dbExamples
+        msg: "FEED ME"
       });
     });
   });
