@@ -2,12 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/calendar", function(req, res) {
-    db.Recipe.findAll({
-      where: {
-        day: tues,
-        time: lunch
-      }
-    }).then(function(dbRecipe) {
+    db.Recipe.findAll({}).then(function(dbRecipe) {
       res.json(dbRecipe);
     });
   });
@@ -32,11 +27,38 @@ module.exports = function(app) {
   // });
 
   app.get("/api/ingredients/:id", function(req, res) {
-    db.Recipe.findOne({ where: { id: req.params.id } }).then(function(
-      ingredient
-    ) {
+    db.Recipe.findOne({ where: { id: req.params.id } }).then(function(ingredient) {
       res.json(ingredient);
     });
+  });
+
+  app.post("/api/signup", (req, res) => {
+    console.log(req.body);
+    db.User.create(req.body)
+      .then(user => {
+        res.status(201).send(user);
+      })
+      .catch(err => {
+        res.status(400).send(err);
+      });
+  });
+
+  app.post("/api/login", (req, res) => {
+    console.log(req.body);
+    db.User.findOne({
+      where: req.body
+    })
+      .then(user => {
+        console.log(user);
+        if (user) {
+          res.status(200).send(user);
+        } else {
+          res.status(400).send(err);
+        }
+      })
+      .catch(err => {
+        res.status(400).send(err);
+      });
   });
 
   // Create a new example
