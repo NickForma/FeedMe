@@ -2,12 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/calendar", function(req, res) {
-    db.Recipe.findAll({
-      where: {
-        day: tues,
-        time: lunch
-      }
-    }).then(function(dbRecipe) {
+    db.Recipe.findAll({}).then(function(dbRecipe) {
       res.json(dbRecipe);
     });
   });
@@ -32,9 +27,7 @@ module.exports = function(app) {
   // });
 
   app.get("/api/ingredients/:id", function(req, res) {
-    db.Recipe.findOne({ where: { id: req.params.id } }).then(function(
-      ingredient
-    ) {
+    db.Recipe.findOne({ where: { id: req.params.id } }).then(function(ingredient) {
       res.json(ingredient);
     });
   });
