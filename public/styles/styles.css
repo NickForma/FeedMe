@@ -7,6 +7,7 @@
   margin: 10%;
   font-size: 150%;
 }
+
 #headline{
     
   text-align: center;
@@ -31,6 +32,7 @@
   top: 18px;
  margin: 0;
  }
+
 
 #scrolltohere {
   margin: 30% 0;
@@ -68,7 +70,7 @@
 }
 
 #day {
- 
+
   margin: 4px;
   text-align: center;
 }
@@ -76,10 +78,11 @@
 #day li a {
   text-decoration: none;
   color: black;
- 
+
+
 }
 #time {
- 
+
   margin: 4px;
   text-align: center;
 }
@@ -87,7 +90,7 @@
 #time li a {
   text-decoration: none;
   color: black;
- 
+
 }
 
 #ingSubmit {
@@ -109,6 +112,8 @@
   width: 15%;
   
   margin: 7px 10px;
+
+
   display: inline-block;
   box-sizing: border-box;
   text-align: justify;
@@ -142,6 +147,7 @@ h1 {
   font-size: 72px;
   background: -webkit-linear-gradient(rgb(61, 61, 61), rgb(43, 219, 43));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
@@ -160,23 +166,47 @@ td {
   line-height: 2.5;
 }
 
- body {
+body {
   margin: 0;
   padding: 0;
   height: 100vh;
-} */
-
- #login #signup .container #login-row #signup-row #login-column #signup-column #login-box #signup-box {
+}
+*/
+  #login
+  #signup
+  .container
+  #login-row
+  #signup-row
+  #login-column
+  #signup-column
+  #login-box
+  #signup-box {
   margin-top: 120px;
   max-width: 600px;
   height: 320px;
-  border: 1px solid #9C9C9C;
-
+  border: 1px solid #9c9c9c;
 }
-#login #signup .container #login-row  #signup-row #login-column #signup-column #login-form #signup-form {
+#login
+  #signup
+  .container
+  #login-row
+  #signup-row
+  #login-column
+  #signup-column
+  #login-form
+  #signup-form {
   padding: 20px;
 }
-#login #signup .container #login-row #signup-row #login-column #signup-column #login-form #signup-form #register-link {
+#login
+  #signup
+  .container
+  #login-row
+  #signup-row
+  #login-column
+  #signup-column
+  #login-form
+  #signup-form
+  #register-link {
   margin-top: -85px;
 }
 #or {
@@ -197,9 +227,9 @@ td {
 }
 
 #logo {
-display:block;
-margin-left: auto;
-margin-right: auto;
-width: 30%;
-height: 100%;
-} 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  height: 100%;
+}

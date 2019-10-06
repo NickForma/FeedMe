@@ -15,8 +15,8 @@ $("#submit").on("click", function () {
   $(".output").html(" ");
   var searchText = $("#search-text").val();
   var queryURL =
-    "https://api.spoonacular.com/recipes/complexSearch?apiKey=785fc0e6c92d43b1bc6f1749a77366e1&addRecipeInformation=true&number=18&query=" +
-    searchText;
+
+    "https://api.spoonacular.com/recipes/complexSearch?apiKey=785fc0e6c92d43b1bc6f1749a77366e1&addRecipeInformation=true&number=18&query=" + searchText;
   console.log(searchText);
   $.ajax({
     url: queryURL,
@@ -43,6 +43,7 @@ $("#submit").on("click", function () {
 });
 
 $(".output").on("click", ".apiContent", function () {
+
 
   // $("#recipeModal").modal("show");
   var recipe = $(this).data("analyzedInstructions");
@@ -83,10 +84,12 @@ $(".output").on("click", ".apiContent", function () {
       recipeID: recipeID
     };
     console.log(newPlan);
+
     if (!selectedDay || !selectedTime) {
       alert("Select Day and Time");
     }
     $.post("/api/id", newPlan).then(function (data) {
+
       console.log(data);
       window.location.href = "/calendar";
     });
