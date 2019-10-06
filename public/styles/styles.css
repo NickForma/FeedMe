@@ -101,7 +101,9 @@
   display: inline;
 }
 
-
+#dropdown {
+  display: inline;
+}
  
 .apiContent {
   width: 15%;

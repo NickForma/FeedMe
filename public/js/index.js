@@ -51,6 +51,7 @@ $(".output").on("click", ".apiContent", function () {
   var recipeID = $(this).data("recipeID");
   var servingSize = $(this).data("servingSize");
   var title = $(this).data("title");
+  $("#recipeTitle").text(title);
   $("#modalImage").attr("src", image);
   $("#servingSize").text(servingSize);
   $("#time").text(readyTime);
@@ -87,7 +88,7 @@ $(".output").on("click", ".apiContent", function () {
     }
     $.post("/api/id", newPlan).then(function (data) {
       console.log(data);
-      window.location.href = "/ingredients/" + data.id;
+      window.location.href = "/calendar";
     });
   });
 });
