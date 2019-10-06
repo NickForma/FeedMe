@@ -23,9 +23,9 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 app.get("/views/login", (req, res) => {
   res.render("login");
