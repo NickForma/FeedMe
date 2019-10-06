@@ -7,13 +7,32 @@
   margin: 10%;
   font-size: 150%;
 }
-#headline {
+
+#headline{
+    
   text-align: center;
-  font-family: "Beth Ellen", cursive;
+  font-family: 'Beth Ellen', cursive;
   font-size: 290%;
   font-weight: bold;
-  margin: 10%;
+  
+  
+  
 }
+
+#monster {
+ 
+  width: 195px;
+  height: 190px;
+  margin: 18px;
+  
+
+}
+ #header {
+  position: relative;
+  top: 18px;
+ margin: 0;
+ }
+
 
 #scrolltohere {
   margin: 30% 0;
@@ -51,6 +70,7 @@
 }
 
 #day {
+
   margin: 4px;
   text-align: center;
 }
@@ -58,8 +78,11 @@
 #day li a {
   text-decoration: none;
   color: black;
+
+
 }
 #time {
+
   margin: 4px;
   text-align: center;
 }
@@ -67,6 +90,7 @@
 #time li a {
   text-decoration: none;
   color: black;
+
 }
 
 #ingSubmit {
@@ -80,10 +104,16 @@
   display: inline;
 }
 
+#dropdown {
+  display: inline;
+}
+ 
 .apiContent {
-  width: 9.5%;
+  width: 15%;
+  
+  margin: 7px 10px;
 
-  margin: 1px;
+
   display: inline-block;
   box-sizing: border-box;
   text-align: justify;
@@ -99,10 +129,16 @@
 #timeinfo {
   text-align: center;
 }
-.modal-dialog {
+
+img {
+  width: 100%;
+}
+
+
+/* .modal-dialog {
   width: 600px;
   height: 100px;
-}
+} */
 .title {
   margin: 40px;
   text-align: center;

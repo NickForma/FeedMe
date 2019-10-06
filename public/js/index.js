@@ -5,7 +5,9 @@ var $password = $("#password");
 var $loginBtn = $(".login-btn");
 var $signupBtn = $(".signup-btn");
 
-$("#submit").on("click", function() {
+
+
+$("#submit").on("click", function () {
   event.preventDefault();
   $('html, body').animate({
     scrollTop: $("#scrolltohere").offset().top
@@ -13,13 +15,13 @@ $("#submit").on("click", function() {
   $(".output").html(" ");
   var searchText = $("#search-text").val();
   var queryURL =
-    "https://api.spoonacular.com/recipes/complexSearch?apiKey=785fc0e6c92d43b1bc6f1749a77366e1&addRecipeInformation=true&number=10&query=" +
-    searchText;
+
+    "https://api.spoonacular.com/recipes/complexSearch?apiKey=785fc0e6c92d43b1bc6f1749a77366e1&addRecipeInformation=true&number=18&query=" + searchText;
   console.log(searchText);
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     var data = response.results;
     for (var i = 0; i < data.length; i++) {
@@ -40,8 +42,9 @@ $("#submit").on("click", function() {
   });
 });
 
-$(".output").on("click", ".apiContent", function(){
-  
+$(".output").on("click", ".apiContent", function () {
+
+
   // $("#recipeModal").modal("show");
   var recipe = $(this).data("analyzedInstructions");
   var image = $(this).data("imageURL");
@@ -49,6 +52,7 @@ $(".output").on("click", ".apiContent", function(){
   var recipeID = $(this).data("recipeID");
   var servingSize = $(this).data("servingSize");
   var title = $(this).data("title");
+  $("#recipeTitle").text(title);
   $("#modalImage").attr("src", image);
   $("#servingSize").text(servingSize);
   $("#time").text(readyTime);
@@ -58,13 +62,19 @@ $(".output").on("click", ".apiContent", function(){
   }
   list += "</ol>";
   $("#infoHolder").html(list);
-  $("#day li a").click(function() {
+  $("#day li a").click(function () {
+    event.preventDefault();
     selectedDay = $(this).text();
   });
-  $("#time li a").click(function() {
+  $("#time li a").click(function () {
+    event.preventDefault();
     selectedTime = $(this).text();
   });
-  $("#ingSubmit").on("click", function() {
+  $(".dropdown-menu").on('click', 'li a', function () {
+    $(this).parent().parent().siblings(".btn:first-child").html($(this).text() + ' <span class="caret"></span>');
+    $(this).parent().parent().siblings(".btn:first-child").val($(this).text());
+  });
+  $("#ingSubmit").on("click", function () {
     event.preventDefault();
     console.log("I am running");
     var newPlan = {
@@ -74,26 +84,32 @@ $(".output").on("click", ".apiContent", function(){
       recipeID: recipeID
     };
     console.log(newPlan);
-    if(!selectedDay || !selectedTime){
+
+    if (!selectedDay || !selectedTime) {
       alert("Select Day and Time");
     }
-    $.post("/api/id", newPlan).then(function(data){
+    $.post("/api/id", newPlan).then(function (data) {
+
       console.log(data);
-      window.location.href = "/ingredients/" + data.id;
+      window.location.href = "/calendar";
     });
   });
 });
 
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 // The API object contains methods for each kind of request we'll make
 var API = {
-  login: function(loginCreds) {
+  login: function (loginCreds) {
     return $.ajax({
       url: "/api/login",
       type: "POST",
       data: loginCreds
     });
   },
-  signup: function(signupCreds) {
+  signup: function (signupCreds) {
     return $.ajax({
       url: "/api/signup",
       type: "POST",
@@ -102,25 +118,25 @@ var API = {
   }
 };
 
-var handleSignpBtnClick = function(event) {
+var handleSignpBtnClick = function (event) {
   event.preventDefault();
   const signupCreds = {
     email: $email.val(),
     password: $password.val()
   };
   API.signup(signupCreds)
-    .done(function(data) {
+    .done(function (data) {
       localStorage.setItem("signedUpUserId", data.id);
       location.href = "/";
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
+    .fail(function (jqXHR, textStatus, errorThrown) {
       alert("Sign Up Failed! Try Again!");
       $password.val("");
     })
-    .always(function() {});
+    .always(function () { });
 };
 
-var handleLoginBtnClick = function(event) {
+var handleLoginBtnClick = function (event) {
   event.preventDefault();
 
   const loginCreds = {
@@ -132,15 +148,15 @@ var handleLoginBtnClick = function(event) {
     return;
   }
   API.login(loginCreds)
-    .done(function(data) {
+    .done(function (data) {
       localStorage.setItem("loggedInUserId", data.id);
       location.href = "/";
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
+    .fail(function (jqXHR, textStatus, errorThrown) {
       alert("Login Failed");
       $password.val("");
     })
-    .always(function() {});
+    .always(function () { });
 };
 
 //Event listeners to the submit buttons
