@@ -8,15 +8,17 @@
   font-size: 150%;
 }
 
+#logoNav{
+  height: 70px;
+  width: 150px;
+}
+
 #headline{
     
   text-align: center;
   font-family: 'Beth Ellen', cursive;
   font-size: 290%;
   font-weight: bold;
-  
-  
-  
 }
 
 #monster {
