@@ -131,12 +131,13 @@
 }
 #timeinfo {
   text-align: center;
-  
-.modal-dialog {
+}
 
-  width: 600px;
-  height: 100px;
-} */
+img {
+  width: 100%;
+}
+
+  
 .title {
   margin: 40px;
   text-align: center;
