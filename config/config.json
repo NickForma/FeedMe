@@ -1,12 +1,7 @@
 {
   "development": {
     "username": "root",
-
-  
-
-    "password": "theman4-life",
-
-
+    "password": "#Tejash12",
     "database": "feedMeDb",
     "host": "localhost",
     "dialect": "mysql"

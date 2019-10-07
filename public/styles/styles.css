@@ -128,14 +128,9 @@
 }
 #timeinfo {
   text-align: center;
-}
+  
+.modal-dialog {
 
-img {
-  width: 100%;
-}
-
-
-/* .modal-dialog {
   width: 600px;
   height: 100px;
 } */
